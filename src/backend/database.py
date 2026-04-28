@@ -207,3 +207,22 @@ initial_teachers = [
         "role": "admin"
     }
 ]
+
+
+# Announcements collection
+announcements_collection = db['announcements']
+
+initial_announcements = [
+    {
+        "message": "Activity registration is open until the end of the month. Don't lose your spot!",
+        "start_date": "2026-04-01",
+        "expiration_date": "2026-04-30",
+        "created_by": "principal",
+        "active": True
+    }
+]
+
+def initialize_announcements():
+    """Initialize announcements collection with example data"""
+    if announcements_collection.count_documents({}) == 0:
+        announcements_collection.insert_many(initial_announcements)
